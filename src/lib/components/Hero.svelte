@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { i18n } from '$lib/i18n.svelte';
-	import { parallax } from '$lib/actions/parallax';
 	import { translations } from '$lib/content/translations';
 	import { site } from '$lib/content/site';
 
@@ -8,10 +7,6 @@
 </script>
 
 <section class="hero" id="top">
-	<div class="blob blob-a" aria-hidden="true" use:parallax={{ speed: 0.35 }}></div>
-	<div class="blob blob-b" aria-hidden="true" use:parallax={{ speed: 0.55 }}></div>
-	<div class="blob blob-c" aria-hidden="true" use:parallax={{ speed: 0.18 }}></div>
-
 	<div class="container inner">
 		<p class="availability"><span class="pulse" aria-hidden="true"></span>{m.hero.availability}</p>
 		<p class="hello">{m.hero.hello}</p>
@@ -29,16 +24,12 @@
 
 <style>
 	.hero {
-		position: relative;
-		overflow: hidden;
 		min-height: calc(100svh - 4rem);
 		display: flex;
 		align-items: center;
 	}
 
 	.inner {
-		position: relative;
-		z-index: 1;
 		padding-block: 5rem;
 	}
 
@@ -219,45 +210,4 @@
 		border: 1px solid rgba(255, 255, 255, 0.2);
 	}
 
-	.blob {
-		position: absolute;
-		width: 34rem;
-		height: 34rem;
-		border-radius: 50%;
-		filter: blur(90px);
-		opacity: 0.35;
-		animation: float 14s ease-in-out infinite alternate;
-	}
-
-	.blob-a {
-		background: var(--violet);
-		top: -10rem;
-		left: -8rem;
-	}
-
-	.blob-b {
-		background: var(--pink);
-		bottom: -12rem;
-		right: -6rem;
-		animation-delay: -5s;
-	}
-
-	.blob-c {
-		background: var(--orange);
-		top: 30%;
-		right: 20%;
-		width: 20rem;
-		height: 20rem;
-		opacity: 0.22;
-		animation-delay: -9s;
-	}
-
-	@keyframes float {
-		from {
-			transform: translate(0, 0) scale(1);
-		}
-		to {
-			transform: translate(3rem, -2.5rem) scale(1.15);
-		}
-	}
 </style>
