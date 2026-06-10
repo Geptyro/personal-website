@@ -16,6 +16,11 @@
 			<a href="#contact">{m.nav.contact}</a>
 		</nav>
 		<div class="lang" role="group" aria-label="Language">
+			<span
+				class="indicator"
+				aria-hidden="true"
+				style="transform: translateX(calc({locales.indexOf(i18n.locale)} * (100% + 2px)))"
+			></span>
 			{#each locales as locale (locale)}
 				<button
 					class:active={i18n.locale === locale}
@@ -91,6 +96,7 @@
 	}
 
 	.lang {
+		position: relative;
 		display: flex;
 		border: 1px solid rgba(255, 255, 255, 0.12);
 		border-radius: 999px;
@@ -98,21 +104,40 @@
 		gap: 2px;
 	}
 
+	/* Sliding gradient pill behind the active language (width math assumes 2 locales) */
+	.indicator {
+		position: absolute;
+		top: 3px;
+		bottom: 3px;
+		left: 3px;
+		width: calc(50% - 4px);
+		border-radius: 999px;
+		background: var(--gradient);
+		transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+		view-transition-name: lang-pill;
+	}
+
 	.lang button {
+		position: relative;
+		z-index: 1;
 		border: none;
 		background: transparent;
 		color: var(--muted);
 		font: inherit;
 		font-size: 0.75rem;
 		font-weight: 600;
-		padding: 0.25rem 0.6rem;
+		min-width: 2.6rem;
+		padding: 0.25rem 0;
 		border-radius: 999px;
 		cursor: pointer;
-		transition: color 0.2s;
+		transition: color 0.2s, transform 0.15s;
+	}
+
+	.lang button:active {
+		transform: scale(0.92);
 	}
 
 	.lang button.active {
-		background: var(--gradient);
 		color: #fff;
 	}
 

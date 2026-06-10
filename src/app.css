@@ -92,6 +92,18 @@ a {
 	translate: 0 0;
 }
 
+/* Language-switch crossfade (View Transitions API) */
+::view-transition-old(root),
+::view-transition-new(root) {
+	animation-duration: 0.25s;
+}
+
+/* The language pill travels to its new position instead of crossfading */
+::view-transition-group(lang-pill) {
+	animation-duration: 0.35s;
+	animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
 @media (prefers-reduced-motion: reduce) {
 	html {
 		scroll-behavior: auto;
@@ -102,5 +114,10 @@ a {
 		animation-duration: 0.01ms !important;
 		animation-iteration-count: 1 !important;
 		transition-duration: 0.01ms !important;
+	}
+	::view-transition-group(*),
+	::view-transition-old(*),
+	::view-transition-new(*) {
+		animation: none !important;
 	}
 }
