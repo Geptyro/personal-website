@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { i18n } from '$lib/i18n.svelte';
+	import { parallax } from '$lib/actions/parallax';
 	import { translations } from '$lib/content/translations';
 	import { site } from '$lib/content/site';
 
@@ -7,9 +8,9 @@
 </script>
 
 <section class="hero" id="top">
-	<div class="blob blob-a" aria-hidden="true"></div>
-	<div class="blob blob-b" aria-hidden="true"></div>
-	<div class="blob blob-c" aria-hidden="true"></div>
+	<div class="blob blob-a" aria-hidden="true" use:parallax={{ speed: 0.35 }}></div>
+	<div class="blob blob-b" aria-hidden="true" use:parallax={{ speed: 0.55 }}></div>
+	<div class="blob blob-c" aria-hidden="true" use:parallax={{ speed: 0.18 }}></div>
 
 	<div class="container inner">
 		<p class="availability"><span class="pulse" aria-hidden="true"></span>{m.hero.availability}</p>
