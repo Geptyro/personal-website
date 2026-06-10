@@ -3,11 +3,11 @@
 </script>
 
 <div class="bg" aria-hidden="true">
-	<div class="blob a" use:parallax={{ speed: -0.12 }}></div>
-	<div class="blob b" use:parallax={{ speed: -0.2 }}></div>
-	<div class="blob c" use:parallax={{ speed: -0.06 }}></div>
-	<div class="blob d" use:parallax={{ speed: -0.16 }}></div>
-	<div class="blob e" use:parallax={{ speed: -0.09 }}></div>
+	<div class="blob a" use:parallax={{ speed: -0.12, stiffness: 90, damping: 0.62 }}></div>
+	<div class="blob b" use:parallax={{ speed: -0.2, stiffness: 60, damping: 0.55 }}></div>
+	<div class="blob c" use:parallax={{ speed: -0.06, stiffness: 130, damping: 0.7 }}></div>
+	<div class="blob d" use:parallax={{ speed: -0.16, stiffness: 50, damping: 0.5 }}></div>
+	<div class="blob e" use:parallax={{ speed: -0.09, stiffness: 110, damping: 0.65 }}></div>
 	<div class="grain"></div>
 </div>
 
@@ -27,22 +27,8 @@
 		animation: float 16s ease-in-out infinite alternate;
 	}
 
-	/* Compositor-driven parallax where supported (the JS action no-ops in that case) */
-	@supports (animation-timeline: scroll()) {
-		.blob {
-			animation-name: float, drift;
-			animation-duration: 16s, 1s;
-			animation-timing-function: ease-in-out, linear;
-			animation-iteration-count: infinite, 1;
-			animation-direction: alternate, normal;
-			animation-fill-mode: none, both;
-			animation-timeline: auto, scroll(root);
-		}
-	}
-
 	.a {
 		--c: var(--violet);
-		--drift: -260px;
 		width: 50rem;
 		height: 50rem;
 		top: -16rem;
@@ -52,46 +38,42 @@
 
 	.b {
 		--c: var(--pink);
-		--drift: -460px;
 		width: 44rem;
 		height: 44rem;
 		top: 35vh;
 		right: -16rem;
 		opacity: 0.35;
-		animation-delay: -4s, 0s;
+		animation-delay: -4s;
 	}
 
 	.c {
 		--c: var(--orange);
-		--drift: -120px;
 		width: 32rem;
 		height: 32rem;
 		top: 18vh;
 		left: 34vw;
 		opacity: 0.26;
-		animation-delay: -8s, 0s;
+		animation-delay: -8s;
 	}
 
 	.d {
 		--c: var(--cyan);
-		--drift: -360px;
 		width: 42rem;
 		height: 42rem;
 		bottom: -18rem;
 		left: -12rem;
 		opacity: 0.3;
-		animation-delay: -12s, 0s;
+		animation-delay: -12s;
 	}
 
 	.e {
 		--c: var(--pink);
-		--drift: -200px;
 		width: 36rem;
 		height: 36rem;
 		bottom: 2vh;
 		right: 24vw;
 		opacity: 0.2;
-		animation-delay: -6s, 0s;
+		animation-delay: -6s;
 	}
 
 	/* Subtle noise kills gradient banding on dark backgrounds */
@@ -110,15 +92,6 @@
 		}
 		to {
 			transform: translate(3rem, -2.5rem) scale(1.12);
-		}
-	}
-
-	@keyframes drift {
-		from {
-			translate: 0 0;
-		}
-		to {
-			translate: 0 var(--drift, -200px);
 		}
 	}
 
