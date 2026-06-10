@@ -22,6 +22,12 @@ export function parallax(node: HTMLElement, params: ParallaxParams = {}) {
 		return {};
 	}
 
+	// When CSS scroll-driven animations are available, the stylesheet handles
+	// the parallax on the compositor — skip the JS fallback entirely.
+	if (typeof CSS !== 'undefined' && CSS.supports('animation-timeline: scroll()')) {
+		return {};
+	}
+
 	window.addEventListener('scroll', onScroll, { passive: true });
 	update();
 
