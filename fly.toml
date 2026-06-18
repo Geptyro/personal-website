@@ -1,0 +1,51 @@
+# Private backend app. Privacy comes from NOT allocating a public IP (see the
+# deploy step / runbook), NOT from omitting a ports block — Fly hard-fails
+# port-less services now. With no public IP this is reachable only as
+# personal-website.flycast from the cdd-gateway, which terminates TLS and routes
+# by Host header. See /workspace/pro/MIGRATION-PLAN.md.
+app = "personal-website"
+primary_region = "cdg"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  HOST = "0.0.0.0"
+  PORT = "3000"
+  # adapter-node needs ORIGIN to build absolute URLs / pass CSRF on form actions.
+  # The public origin is the gateway-fronted domain, NOT the .flycast address.
+  ORIGIN = "https://cedricdessalles.dev"
+  # Trust the forwarded headers the gateway sets. Safe ONLY because this app is
+  # private (.flycast) — never expose it publicly with these on.
+  PROTOCOL_HEADER = "x-forwarded-proto"
+  HOST_HEADER = "x-forwarded-host"
+  ADDRESS_HEADER = "x-forwarded-for"
+  XFF_DEPTH = "1"
+
+# http_service like the falcra-website reference. force_https = false: the
+# gateway already forces HTTPS at the edge, so there's no point redirecting again
+# on the private hop. Keep one machine running: Flycast (the gateway's private
+# routing) does NOT reliably wake a fully scaled-to-zero backend on a proxied
+# request — verified on the bestiary app. One always-on machine makes the hop
+# deterministic. (The gateway reaches this app at personal-website.flycast:80,
+# NOT :3000 — Flycast routes through the Fly proxy's published port.)
+[http_service]
+  internal_port = 3000
+  force_https = false
+  auto_stop_machines = "suspend"
+  auto_start_machines = true
+  min_machines_running = 1
+
+  [[http_service.checks]]
+    method = "GET"
+    path = "/"
+    interval = "15s"
+    timeout = "2s"
+    grace_period = "5s"
+
+# A SvelteKit Node server can OOM on Fly's 256mb default (the falcra-website
+# reference sets this for the same reason). 512mb is comfortable and cheap.
+[[vm]]
+  memory = "512mb"
+  cpu_kind = "shared"
+  cpus = 1
