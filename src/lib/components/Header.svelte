@@ -1,35 +1,52 @@
 <script lang="ts">
+	import { page } from '$app/state';
 	import { i18n, setLocale } from '$lib/i18n.svelte';
 	import { translations, locales } from '$lib/content/translations';
+	import { site } from '$lib/content/site';
 
 	const m = $derived(translations[i18n.locale]);
+	const path = $derived(page.url.pathname);
 </script>
 
 <header>
 	<div class="container bar">
 		<a class="logo" href="/" aria-label="Home">cd<span class="gradient-text">.</span></a>
 		<nav>
-			<a href="/">{m.nav.apps}</a>
-			<a href="/resume#work">{m.nav.work}</a>
-			<a href="/resume#experience">{m.nav.experience}</a>
-			<a href="/resume#skills">{m.nav.skills}</a>
-			<a href="/resume#contact">{m.nav.contact}</a>
+			<a href="/" class:active={path === '/'}>{m.nav.apps}</a>
+			<a href="/resume" class:active={path.startsWith('/resume')}>{m.nav.resume}</a>
 		</nav>
-		<div class="lang" role="group" aria-label="Language">
-			<span
-				class="indicator"
-				aria-hidden="true"
-				style="transform: translateX(calc({locales.indexOf(i18n.locale)} * (100% + 2px)))"
-			></span>
-			{#each locales as locale (locale)}
-				<button
-					class:active={i18n.locale === locale}
-					onclick={() => setLocale(locale)}
-					aria-pressed={i18n.locale === locale}
-				>
-					{locale.toUpperCase()}
-				</button>
-			{/each}
+		<div class="actions">
+			<a
+				class="icon"
+				href={site.github}
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label="GitHub"
+				title="GitHub"
+			>
+				<svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true" fill="currentColor">
+					<path
+						d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"
+					/>
+				</svg>
+			</a>
+			<a class="email" href="mailto:{site.email}">{m.contact.button}</a>
+			<div class="lang" role="group" aria-label="Language">
+				<span
+					class="indicator"
+					aria-hidden="true"
+					style="transform: translateX(calc({locales.indexOf(i18n.locale)} * (100% + 2px)))"
+				></span>
+				{#each locales as locale (locale)}
+					<button
+						class:active={i18n.locale === locale}
+						onclick={() => setLocale(locale)}
+						aria-pressed={i18n.locale === locale}
+					>
+						{locale.toUpperCase()}
+					</button>
+				{/each}
+			</div>
 		</div>
 	</div>
 </header>
@@ -61,7 +78,6 @@
 	nav {
 		display: flex;
 		gap: 1.25rem;
-		margin-left: auto;
 	}
 
 	nav a {
@@ -93,6 +109,51 @@
 
 	nav a:hover::after {
 		transform: scaleX(1);
+	}
+
+	nav a.active {
+		color: var(--text);
+	}
+
+	nav a.active::after {
+		transform: scaleX(1);
+	}
+
+	.actions {
+		display: flex;
+		align-items: center;
+		gap: 0.9rem;
+		margin-left: auto;
+	}
+
+	.icon {
+		display: grid;
+		place-items: center;
+		color: var(--muted);
+		transition: color 0.2s, transform 0.2s;
+	}
+
+	.icon:hover {
+		color: var(--text);
+		transform: translateY(-1px);
+	}
+
+	.email {
+		font-family: var(--font-display);
+		font-size: 0.85rem;
+		font-weight: 600;
+		text-decoration: none;
+		color: #fff;
+		background: var(--gradient);
+		border-radius: 999px;
+		padding: 0.45rem 1.1rem;
+		white-space: nowrap;
+		transition: transform 0.2s, box-shadow 0.2s;
+	}
+
+	.email:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 10px 28px -10px var(--pink);
 	}
 
 	.lang {
@@ -141,12 +202,19 @@
 		color: #fff;
 	}
 
-	@media (max-width: 560px) {
-		nav {
+	@media (max-width: 640px) {
+		.bar {
+			gap: 1rem;
+		}
+
+		.email {
 			display: none;
 		}
+	}
+
+	@media (max-width: 420px) {
 		.lang {
-			margin-left: auto;
+			display: none;
 		}
 	}
 </style>

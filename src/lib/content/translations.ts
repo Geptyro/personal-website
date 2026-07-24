@@ -12,16 +12,12 @@ export const translations = {
 		},
 		nav: {
 			apps: 'Applications',
-			work: 'Work',
-			projects: 'Side projects',
-			experience: 'Experience',
-			skills: 'Skills',
-			contact: 'Contact'
+			resume: 'Résumé'
 		},
 		launcher: {
 			metaTitle: 'Senior Software Engineer',
 			metaDescription:
-				'Personal website of Cédric Dessalles — senior software engineer. Pick an application: résumé, grid-router, panels-layout, Sveld, mesh-x, Homestead.',
+				'Personal website of Cédric Dessalles — senior software engineer. Pick an application: résumé, grid-router, panels-layout, Sveld, mesh-x, Falcra.',
 			subtitle: 'Every project here is an application. Pick one.',
 			open: 'Open'
 		},
@@ -80,16 +76,12 @@ export const translations = {
 		},
 		nav: {
 			apps: 'Applications',
-			work: 'Projets pro',
-			projects: 'Projets perso',
-			experience: 'Parcours',
-			skills: 'Compétences',
-			contact: 'Contact'
+			resume: 'CV'
 		},
 		launcher: {
 			metaTitle: 'Ingénieur logiciel senior',
 			metaDescription:
-				'Site personnel de Cédric Dessalles — ingénieur logiciel senior. Choisissez une application : CV, grid-router, panels-layout, Sveld, mesh-x, Homestead.',
+				'Site personnel de Cédric Dessalles — ingénieur logiciel senior. Choisissez une application : CV, grid-router, panels-layout, Sveld, mesh-x, Falcra.',
 			subtitle: 'Ici, chaque projet est une application. Choisissez-en une.',
 			open: 'Ouvrir'
 		},

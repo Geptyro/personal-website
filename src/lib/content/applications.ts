@@ -123,8 +123,8 @@ export const applications: Application[] = [
 		year: '2024 →',
 		status: 'wip',
 		tagline: {
-			en: 'My JavaScript game engine — ECS, worker-parallel simulation, three.js/WebGPU — and Homestead, the colony-defense game built on it.',
-			fr: 'Mon moteur de jeu JavaScript — ECS, simulation parallèle en workers, three.js/WebGPU — et Homestead, le jeu de défense de colonie construit dessus.'
+			en: 'My JavaScript game engine — ECS, worker-parallel simulation, three.js/WebGPU — with a live scene from the colony-defense game built on it.',
+			fr: 'Mon moteur de jeu JavaScript — ECS, simulation parallèle en workers, three.js/WebGPU — avec une scène en direct du jeu de défense de colonie construit dessus.'
 		},
 		tech: ['three.js', 'ECS', 'Workers', 'WebGPU'],
 		links: []
