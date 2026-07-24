@@ -116,6 +116,21 @@ export const applications: Application[] = [
 		links: []
 	},
 	{
+		slug: 'uar',
+		external: 'https://uar.cedricdessalles.dev',
+		name: 'UAR Wiki',
+		icon: '🧟',
+		accent: 'var(--pink)',
+		year: '2026',
+		status: 'published',
+		tagline: {
+			en: 'A wiki for Undead Assault Reborn (SC2 arcade) — 428 units, classes, items and mission flow, extracted from the map files.',
+			fr: 'Un wiki pour Undead Assault Reborn (arcade SC2) — 428 unités, classes, objets et missions, extraits des fichiers de la carte.'
+		},
+		tech: ['SvelteKit', 'Static', 'StarCraft II'],
+		links: [{ label: 'GitHub', href: 'https://github.com/Geptyro/uar-website' }]
+	},
+	{
 		slug: 'falcra',
 		name: 'Falcra',
 		icon: '🏰',
