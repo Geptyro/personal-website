@@ -1,6 +1,6 @@
 name: Deploy
 
-# Deploys the private Fly app `personal-website` on a version tag (vX.Y.Z).
+# Deploys the private Fly app `cdd-personal-website` on a version tag (vX.Y.Z).
 # Pushing to main does NOT deploy — cut a tag to release:
 #   git tag v1.0.0 && git push origin v1.0.0
 #
@@ -8,7 +8,7 @@ name: Deploy
 # template Geptyro/github-workflows — this file only picks the app name.
 #
 # ONE-TIME BOOTSTRAP (before the first tag — flyctl deploy does NOT create apps):
-#   fly launch --flycast --no-deploy --name personal-website --org personal
+#   fly launch --flycast --no-deploy --name cdd-personal-website --org personal
 #   # --flycast gives a PRIVATE 6PN address and no public IP. The gateway
 #   # (cdd-gateway) routes cedricdessalles.dev here over .flycast.
 on:
@@ -24,7 +24,7 @@ jobs:
   deploy:
     uses: Geptyro/github-workflows/.github/workflows/fly-deploy.yml@main
     with:
-      app: personal-website
+      app: cdd-personal-website
     secrets:
       FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
       # Read-only PAT (Contents:read on Geptyro/{falcra,sools,homestead-assets,

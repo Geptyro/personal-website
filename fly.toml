@@ -1,9 +1,9 @@
 # Private backend app. Privacy comes from NOT allocating a public IP (see the
 # deploy step / runbook), NOT from omitting a ports block — Fly hard-fails
 # port-less services now. With no public IP this is reachable only as
-# personal-website.flycast from the cdd-gateway, which terminates TLS and routes
+# cdd-personal-website.flycast from the cdd-gateway, which terminates TLS and routes
 # by Host header. See /workspace/pro/MIGRATION-PLAN.md.
-app = "personal-website"
+app = "cdd-personal-website"
 primary_region = "cdg"
 
 [build]
@@ -27,7 +27,7 @@ primary_region = "cdg"
 # on the private hop. Keep one machine running: Flycast (the gateway's private
 # routing) does NOT reliably wake a fully scaled-to-zero backend on a proxied
 # request — verified on the bestiary app. One always-on machine makes the hop
-# deterministic. (The gateway reaches this app at personal-website.flycast:80,
+# deterministic. (The gateway reaches this app at cdd-personal-website.flycast:80,
 # NOT :3000 — Flycast routes through the Fly proxy's published port.)
 [http_service]
   internal_port = 3000
