@@ -11,11 +11,26 @@ export const translations = {
 				'Personal website of Cédric Dessalles — senior software engineer at Michelin, building AI agent platforms. Work, experience, skills and contact.'
 		},
 		nav: {
+			apps: 'Applications',
 			work: 'Work',
 			projects: 'Side projects',
 			experience: 'Experience',
 			skills: 'Skills',
 			contact: 'Contact'
+		},
+		launcher: {
+			metaTitle: 'Senior Software Engineer',
+			metaDescription:
+				'Personal website of Cédric Dessalles — senior software engineer. Pick an application: résumé, grid-router, panels-layout, Sveld, mesh-x, Homestead.',
+			subtitle: 'Every project here is an application. Pick one.',
+			open: 'Open'
+		},
+		app: {
+			back: 'All applications',
+			status: {
+				published: 'Published',
+				wip: 'Work in progress'
+			}
 		},
 		hero: {
 			hello: "Hey, I'm",
@@ -64,11 +79,26 @@ export const translations = {
 				'Site personnel de Cédric Dessalles — ingénieur logiciel senior chez Michelin, création de plateformes d’agents IA. Projets, parcours, compétences et contact.'
 		},
 		nav: {
+			apps: 'Applications',
 			work: 'Projets pro',
 			projects: 'Projets perso',
 			experience: 'Parcours',
 			skills: 'Compétences',
 			contact: 'Contact'
+		},
+		launcher: {
+			metaTitle: 'Ingénieur logiciel senior',
+			metaDescription:
+				'Site personnel de Cédric Dessalles — ingénieur logiciel senior. Choisissez une application : CV, grid-router, panels-layout, Sveld, mesh-x, Homestead.',
+			subtitle: 'Ici, chaque projet est une application. Choisissez-en une.',
+			open: 'Ouvrir'
+		},
+		app: {
+			back: 'Toutes les applications',
+			status: {
+				published: 'Publié',
+				wip: 'En cours'
+			}
 		},
 		hero: {
 			hello: 'Salut, moi c’est',

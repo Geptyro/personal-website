@@ -7,13 +7,13 @@
 
 <header>
 	<div class="container bar">
-		<a class="logo" href="#top" aria-label="Home">cd<span class="gradient-text">.</span></a>
+		<a class="logo" href="/" aria-label="Home">cd<span class="gradient-text">.</span></a>
 		<nav>
-			<a href="#work">{m.nav.work}</a>
-			<a href="#projects">{m.nav.projects}</a>
-			<a href="#experience">{m.nav.experience}</a>
-			<a href="#skills">{m.nav.skills}</a>
-			<a href="#contact">{m.nav.contact}</a>
+			<a href="/">{m.nav.apps}</a>
+			<a href="/resume#work">{m.nav.work}</a>
+			<a href="/resume#experience">{m.nav.experience}</a>
+			<a href="/resume#skills">{m.nav.skills}</a>
+			<a href="/resume#contact">{m.nav.contact}</a>
 		</nav>
 		<div class="lang" role="group" aria-label="Language">
 			<span

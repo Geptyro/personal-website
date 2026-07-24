@@ -27,3 +27,6 @@ jobs:
       app: personal-website
     secrets:
       FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+      # Read-only PAT (Contents:read on Geptyro/{falcra,sools,homestead-assets,
+      # homestead}) — the Docker build installs those private repos as git deps.
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
