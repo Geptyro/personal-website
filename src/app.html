@@ -16,13 +16,14 @@
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
 		<!-- Umami (self-hosted at stats.cedricdessalles.dev, cookieless, first-party;
-		     tracker renamed to insights.js to stay off adblock lists). Paste this
-		     site's Website ID from the Umami dashboard — see umami/README.md. Until
-		     then the tag is inert. SPA navigations are auto-tracked. -->
+		     tracker renamed to insights.js to stay off adblock lists). SPA
+		     navigations are auto-tracked; data-domains keeps localhost dev
+		     sessions out of the stats. -->
 		<script
 			defer
 			src="https://stats.cedricdessalles.dev/insights.js"
 			data-website-id="3774582f-48fe-4ba4-9844-e0e6623b6edf"
+			data-domains="cedricdessalles.dev,www.cedricdessalles.dev"
 		></script>
 	</body>
 </html>
