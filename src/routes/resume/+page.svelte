@@ -15,9 +15,13 @@
 <svelte:head>
 	<title>{site.name} — {m.meta.title}</title>
 	<meta name="description" content={m.meta.description} />
+	<link rel="canonical" href="https://{site.domain}/resume" />
+	<meta property="og:type" content="website" />
 	<meta property="og:title" content="{site.name} — {m.meta.title}" />
 	<meta property="og:description" content={m.meta.description} />
 	<meta property="og:url" content="https://{site.domain}/resume" />
+	<meta name="twitter:title" content="{site.name} — {m.meta.title}" />
+	<meta name="twitter:description" content={m.meta.description} />
 </svelte:head>
 
 <Hero />

@@ -12,7 +12,14 @@ export const translations = {
 		},
 		nav: {
 			apps: 'Applications',
-			resume: 'Résumé'
+			resume: 'Résumé',
+			articles: 'Articles'
+		},
+		articles: {
+			title: 'Articles',
+			subtitle: 'Ideas and lessons from building with AI. Written in English.',
+			metaDescription:
+				'Articles by Cédric Dessalles — AI, software engineering, and building with coding agents.'
 		},
 		launcher: {
 			metaTitle: 'Senior Software Engineer',
@@ -76,7 +83,14 @@ export const translations = {
 		},
 		nav: {
 			apps: 'Applications',
-			resume: 'CV'
+			resume: 'CV',
+			articles: 'Articles'
+		},
+		articles: {
+			title: 'Articles',
+			subtitle: 'Idées et retours d’expérience sur le développement avec l’IA. Rédigés en anglais.',
+			metaDescription:
+				'Articles de Cédric Dessalles — IA, ingénierie logicielle et développement avec des agents de code.'
 		},
 		launcher: {
 			metaTitle: 'Ingénieur logiciel senior',

@@ -14,6 +14,7 @@
 		<nav>
 			<a href="/" class:active={path === '/'}>{m.nav.apps}</a>
 			<a href="/resume" class:active={path.startsWith('/resume')}>{m.nav.resume}</a>
+			<a href="/articles" class:active={path.startsWith('/articles')}>{m.nav.articles}</a>
 		</nav>
 		<div class="actions">
 			<a

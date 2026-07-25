@@ -4,7 +4,10 @@ declare global {
 	namespace App {
 		// interface Error {}
 		// interface Locals {}
-		// interface PageData {}
+		interface PageData {
+			/** Per-page OG/Twitter share image URL; layout falls back to the site card when unset. */
+			ogImage?: string;
+		}
 		// interface PageState {}
 		// interface Platform {}
 	}

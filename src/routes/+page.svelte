@@ -11,9 +11,13 @@
 <svelte:head>
 	<title>{site.name} — {m.launcher.metaTitle}</title>
 	<meta name="description" content={m.launcher.metaDescription} />
+	<link rel="canonical" href="https://{site.domain}" />
+	<meta property="og:type" content="website" />
 	<meta property="og:title" content="{site.name} — {m.launcher.metaTitle}" />
 	<meta property="og:description" content={m.launcher.metaDescription} />
 	<meta property="og:url" content="https://{site.domain}" />
+	<meta name="twitter:title" content="{site.name} — {m.launcher.metaTitle}" />
+	<meta name="twitter:description" content={m.launcher.metaDescription} />
 </svelte:head>
 
 <section class="launcher">
